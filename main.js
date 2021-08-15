@@ -31,18 +31,47 @@ const PersonalMovieDB = {
 
     
 
-for (let i=0;i<2;i++) {
+// for (let i=0;i<2;i++) {
+//     const a = prompt('what is last movie?', ''),
+//           b = +prompt('which ball you give?', '');
+
+//     if ( a != null && b != null && a != '' && b != '' && a.length < 50) {
+//     PersonalMovieDB.movies[a] = b;
+//     console.log('done');
+//     } else {
+//         console.log('error');
+//         i--;
+//     }
+// }
+
+let num = 0;
+
+while(num <2){
     const a = prompt('what is last movie?', ''),
           b = +prompt('which ball you give?', '');
-
-    if ( a != null && b != null && a != '' && b != '' && a.length < 50) {
-    PersonalMovieDB.movies[a] = b;
-    console.log('done');
-    } else {
-        console.log('error');
-        i--;
-    }
+          num++;
+          if ( a != null && b != null && a != '' && b != '' && a.length < 50) {
+            PersonalMovieDB.movies[a] = b;
+            console.log('done');
+            } else {
+                console.log('error');
+                num--;
+            }
 }
+
+// do{
+//     const a = prompt('what is last movie?', ''),
+//           b = +prompt('which ball you give?', '');
+//           num++;
+//           if ( a != null && b != null && a != '' && b != '' && a.length < 50) {
+//             PersonalMovieDB.movies[a] = b;
+//             console.log('done');
+//             } else {
+//                 console.log('error');
+//                 num--;
+//             }
+// }
+// while(num<2);
 
 if (PersonalMovieDB.count <= 10){
     console.log('few');
