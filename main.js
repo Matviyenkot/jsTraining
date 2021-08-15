@@ -29,13 +29,30 @@ const PersonalMovieDB = {
     private: false
 };
 
-const a = prompt('what is last movie?', ''),
-      b = +prompt('which ball you give?', ''),
-      c = prompt('what is last movie?', ''),
-      d = +prompt('which ball you give?', '');
+    
 
+for (let i=0;i<2;i++) {
+    const a = prompt('what is last movie?', ''),
+          b = +prompt('which ball you give?', '');
 
-PersonalMovieDB.movies[a] = b;
-PersonalMovieDB.movies[c] = d;
+    if ( a != null && b != null && a != '' && b != '' && a.length < 50) {
+    PersonalMovieDB.movies[a] = b;
+    console.log('done');
+    } else {
+        console.log('error');
+        i--;
+    }
+}
+
+if (PersonalMovieDB.count <= 10){
+    console.log('few');
+} else if (PersonalMovieDB.count > 10 && PersonalMovieDB < 30) {
+    console.log('normal');
+} else if (PersonalMovieDB.count >= 30 ){
+    console.log('a lot');
+} else {
+    console.log('not found');
+}
+
 
 console.log(PersonalMovieDB);
