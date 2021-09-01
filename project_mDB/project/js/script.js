@@ -12,8 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
             "Скотт Пилигрим против..."
         ]
     };
-    
-console.log(movieDB);
 
     const adv  = document.querySelectorAll(".promo__adv img"),
              poster = document.querySelector(".promo__bg"),
@@ -21,8 +19,8 @@ console.log(movieDB);
              filmList = document.querySelectorAll(".promo__interactive-list"),
              addFilm = document.querySelector(".adding__input"),
              aprove = document.querySelector('form.add'),
-             checkBox = document.querySelector("[type='checkbox']"), 
-             deleteMovie = document.querySelectorAll('.delete');
+             checkBox = document.querySelector("[type='checkbox']"); 
+          //   deleteMovie = document.querySelectorAll('.delete');
 
     
              
@@ -38,13 +36,13 @@ console.log(movieDB);
                newMovie = `${newMovie.substring(0,22)}...`;
             }
 
+            if (favorite) {
+                console.log("Добавляем любимый фильм");
+            }
+
             movieDB.movies.push(newMovie);
             arraySort(movieDB.movies);
 
-            filmList.forEach(item => {
-                item.innerHTML = "";
-            });
-            
             createMovieList(movieDB.movies, filmList);
         }
 
@@ -71,9 +69,15 @@ console.log(movieDB);
         arr.sort();
     };
     
-    arraySort(movieDB.movies);
+    
 
     function createMovieList(films, parent){
+        filmList.forEach(item => {
+            item.innerHTML = "";
+        });
+
+        arraySort(movieDB.movies);
+
         films.forEach((film, i) => {
             parent.forEach(item => {
                 item.innerHTML += `
@@ -84,10 +88,28 @@ console.log(movieDB);
                 
             }); 
         });
+
+        document.querySelectorAll('.delete').forEach((btn, i) => {
+            btn.addEventListener('click', () => {
+                btn.parentElement.remove();
+                movieDB.movies.splice(i, 1);
+                createMovieList(films, parent);
+            });
+        });
+
     }
+
     
     
     createMovieList(movieDB.movies, filmList);
    
 });
+
+
+
+
+//=========================================
+
+
+
 
